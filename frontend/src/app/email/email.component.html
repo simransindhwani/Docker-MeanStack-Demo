@@ -1,0 +1,60 @@
+<form>
+  <mat-card>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Enter Email</mat-label>
+        <input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" ngModel name="email" #email="ngModel" (change)="log(email)" matInput id="email" type="text" class="form-control">
+        <div class="alert alert-danger" *ngIf="email.touched && !email.valid">Enter a Valid Email Address</div>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Enter a Message</mat-label>
+        <textarea required ngModel name="comments" #comments="ngModel" (change)="log(comments)"matInput name="comments" id="column" rows="10" class="form-control"></textarea>
+        <div class="alert alert-danger "></div>
+      </mat-form-field>
+    </div>
+      <button mat-raised-button color="primary" (click)="onClickSend(email.value,comments.value)">Send Emails</button>&nbsp;
+      <button mat-raised-button color="warn" (click)="onClickView()">View Emails</button>
+      <div *ngFor="let obj of lstcomments">
+        <mat-card>
+          <h4>
+            Email: {{obj.email}}
+          </h4>
+          <p>
+            Message: {{obj.message}}
+          </p>
+        </mat-card>
+       </div>
+
+
+     <!-- <p *ngIf="buttonClick">Data is: {{email}}:{{message}}</p> -->
+  </mat-card>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
